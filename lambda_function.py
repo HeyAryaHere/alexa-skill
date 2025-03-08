@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 class LaunchRequestHandler(AbstractRequestHandler):
-    """Handles skill launch"""
     def can_handle(self, handler_input):
         return is_request_type("LaunchRequest")(handler_input)
 
@@ -17,12 +16,10 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return handler_input.response_builder.speak(speak_output).ask(speak_output).response
 
 class PlanMyDayIntentHandler(AbstractRequestHandler):
-    """Handles the PlanMyDayIntent"""
     def can_handle(self, handler_input):
         return is_intent_name("PlanMyDayIntent")(handler_input)
 
     def handle(self, handler_input):
-        # Placeholder: We will integrate Google Calendar and Gmail scraping here
         speak_output = "I'm gathering your schedule and to-do list. Please wait..."
         return handler_input.response_builder.speak(speak_output).response
 
